@@ -11,17 +11,17 @@ pipeline {
  {
 
 
-
-     
-
-	 stage('Build')
+     stage('Build')
 	 {
-           	 steps 
-		    {
-              	  sh 'mvn --version'
+           	    environment 
+                {
+                  HOME="."
+                }
+                steps 
+		        {
+              	    sh 'mvn --version'
                     echo 'Building stage'
-
-          	  }
+                 }
 	 }
 
 	 stage('Testing')
