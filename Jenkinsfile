@@ -45,5 +45,23 @@ pipeline {
 
 
     }
+
+    post
+    {
+        always
+        {
+            echo "I am always to run this pipeline"
+        }
+
+        success
+        {
+            echo "the pipeline is success";
+        }
+
+        failure
+        {
+            echo "there is some failure issues"
+        }
+    }
 }
 
