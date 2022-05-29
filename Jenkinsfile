@@ -13,10 +13,10 @@ pipeline {
 
      stage('Build')
 	 {
-           	    environment 
-                {
-                  HOME="."
-                }
+           	    // environment 
+                // {
+                //   HOME="."
+                // }
                 steps 
 		        {
               	    sh 'mvn --version'
