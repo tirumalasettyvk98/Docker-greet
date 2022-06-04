@@ -7,6 +7,8 @@ pipeline {
     //     }
     // }
 
+    agent any
+
     stages
  {
 
