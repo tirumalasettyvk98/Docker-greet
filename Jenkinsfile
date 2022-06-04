@@ -22,13 +22,13 @@ pipeline {
                 steps 
 		        {
               	    // sh 'mvn --version'
-                    echo 'Building stage'
-                    echo '$PATH'
-                    echo 'Build_number $env.BUILD_NUMBER'
-                    echo 'Build_id $env.BUILD_ID'
-                    echo 'job-name $env.JOB_NAME'
-                    echo 'BUILD_TAG $env.BUILD_TAG'
-                    echo 'BUILD_url $env.BUILD_URL'
+                    echo "Building stage"
+                    echo "$PATH"
+                    echo "Build_number $env.BUILD_NUMBER"
+                    echo "Build_id $env.BUILD_ID"
+                    echo "job-name $env.JOB_NAME"
+                    echo "BUILD_TAG $env.BUILD_TAG"
+                    echo "BUILD_url $env.BUILD_URL"
 
 
 
