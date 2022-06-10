@@ -1,13 +1,13 @@
 pipeline {
-    // agent 
-    // {
-    //     docker 
-    //     {
-    //         image 'maven:3.6.3'
-    //     }
-    // }
+    agent 
+    {
+        docker 
+        {
+            image 'maven:3.6.3'
+        }
+    }
 
-     agent any
+    //  agent any
 
     // environment
     // {
@@ -34,6 +34,7 @@ pipeline {
               	    // sh 'mvn --version'
                     // sh 'docker version'
                      echo "Building stage"
+                     sh 'mvn --version'
                     // echo "$PATH"
                     // echo "Build_number $env.BUILD_NUMBER"
                     // echo "Build_id $env.BUILD_ID"
@@ -56,22 +57,22 @@ pipeline {
 
     }
 
-    // post
-    // {
-    //     always
-    //     {
-    //         echo "I am always to run this pipeline"
-    //     }
+    post
+    {
+        always
+        {
+            echo "I am always to run this pipeline"
+        }
 
-    //     success
-    //     {
-    //         echo "the pipeline is success";
-    //     }
+        success
+        {
+            echo "the pipeline is success";
+        }
 
-    //     failure
-    //     {
-    //         echo "there is some failure issues"
-    //     }
-    // }
+        failure
+        {
+            echo "there is some failure issues"
+        }
+    }
 }
 
