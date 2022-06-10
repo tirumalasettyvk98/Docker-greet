@@ -7,16 +7,17 @@ pipeline {
     //     }
     // }
 
-    agent any
+    // agent any
 
-    environment
-    {
-        mavenHome= tool 'myMaven'
-        dockerHome= tool 'myDocker'
+    // environment
+    // {
+    //     mavenHome= tool 'myMaven'
+    //     dockerHome= tool 'myDocker'
 
-        PATH= "$mavenHome/bin:$dockerHome/bin:$PATH"
+    //     PATH= "$mavenHome/bin:$dockerHome/bin:$PATH"
+        
 
-    }
+    // }
 
     stages
  {
@@ -30,9 +31,9 @@ pipeline {
                 // }
                 steps 
 		        {
-              	    sh 'mvn --version'
-                    sh 'docker version'
-                    // echo "Building stage"
+              	    // sh 'mvn --version'
+                    // sh 'docker version'
+                     echo "Building stage"
                     // echo "$PATH"
                     // echo "Build_number $env.BUILD_NUMBER"
                     // echo "Build_id $env.BUILD_ID"
