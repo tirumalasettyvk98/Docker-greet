@@ -34,34 +34,75 @@ pipeline {
                     sh 'docker version'
                      echo "Building stage"
                     
-                    echo "$PATH"
-                    echo "Build_number $env.BUILD_NUMBER"
-                    echo "Build_id $env.BUILD_ID"
-                    echo "job-name $env.JOB_NAME"
+                    // echo "$PATH"
+                    // echo "Build_number $env.BUILD_NUMBER"
+                    // echo "Build_id $env.BUILD_ID"
+                    // echo "job-name $env.JOB_NAME"
                     echo "BUILD_TAG $env.BUILD_TAG"
-                    echo "BUILD_url $env.BUILD_URL"
+                    // echo "BUILD_url $env.BUILD_URL"
 
 
 
                  }
         }
 
-        //   stage('Compile')
-        //  {
-        //         steps
-        //         {
-        //             sh 'mvn clean compile'
-        //         }
+          stage('Compile')
+         {
+                steps
+                {
+                    sh 'mvn clean compile'
+                }
             
-        //  }
+         }
 
-        //   stage('Test')
-        //  {
-        //         steps
-        //         {
-        //                 sh 'mvn test'
-        //         } 
-        //  }
+          stage('Test')
+         {
+                steps
+                {
+                        sh 'mvn test'
+                } 
+         }
+
+          stage('Package')
+         {
+                steps
+                {
+                        sh 'mvn package -DskipTests'
+                        
+                } 
+         }
+
+          stage('Building Docker Image')
+          {
+            steps
+            {
+                echo "Building Docker Image"
+               
+                script
+                {
+                    dockerImage = docker.build("tirumalasettyvk98/${env.JOB_NAME}:${env.BUILD_TAG}")
+                }
+            }
+        }
+
+        stage('Pushing Docker Image')
+        {
+            steps
+            {
+                echo "Pushing Docker Image"
+              
+                script
+                {
+                    docker.withRegistry('','dockerhub')
+                    {
+                    dockerImage.push()
+                    dockerImage.push('latest')
+                    }
+                    
+                                       
+                }
+            }
+        }
 	}
 
     
