@@ -1,6 +1,6 @@
 
 
-.0pipeline {
+pipeline {
     // agent 
     // {
     //     docker 
