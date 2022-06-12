@@ -32,37 +32,37 @@ pipeline {
 		        {
               	    sh 'mvn --version'
                     sh 'docker version'
-                    //  echo "Building stage"
-                    //  sh 'mvn --version'
-                    // echo "$PATH"
-                    // echo "Build_number $env.BUILD_NUMBER"
-                    // echo "Build_id $env.BUILD_ID"
-                    // echo "job-name $env.JOB_NAME"
-                    // echo "BUILD_TAG $env.BUILD_TAG"
-                    // echo "BUILD_url $env.BUILD_URL"
+                     echo "Building stage"
+                    
+                    echo "$PATH"
+                    echo "Build_number $env.BUILD_NUMBER"
+                    echo "Build_id $env.BUILD_ID"
+                    echo "job-name $env.JOB_NAME"
+                    echo "BUILD_TAG $env.BUILD_TAG"
+                    echo "BUILD_url $env.BUILD_URL"
 
 
 
                  }
-     }
+        }
 
-          stage('Compile')
-         {
-                steps
-                {
-                    sh 'mvn clean compile'
-                }
+        //   stage('Compile')
+        //  {
+        //         steps
+        //         {
+        //             sh 'mvn clean compile'
+        //         }
             
-         }
+        //  }
 
-          stage('Test')
-         {
-                steps
-                {
-                        sh 'mvn test'
-                } 
-         }
-	 }
+        //   stage('Test')
+        //  {
+        //         steps
+        //         {
+        //                 sh 'mvn test'
+        //         } 
+        //  }
+	}
 
     
        
