@@ -25,14 +25,14 @@ pipeline {
  {
 
 
-     stage('Build')
+     stage('checkout')
 	 {
            	    
                 steps 
 		        {
               	    sh 'mvn --version'
                     sh 'docker version'
-                     echo "Building stage"
+                    //  echo "Building stage"
                     //  sh 'mvn --version'
                     // echo "$PATH"
                     // echo "Build_number $env.BUILD_NUMBER"
@@ -45,6 +45,18 @@ pipeline {
 
                  }
 	 }
+
+    
+         stage('Compile')
+         {
+             sh 'mvn clean compile'
+         }
+
+          stage('Test')
+         {
+             sh 'mvn test'
+         }
+     
 
 	 
 
