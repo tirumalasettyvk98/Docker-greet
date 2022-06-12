@@ -1,23 +1,25 @@
-pipeline {
-    agent 
-    {
-        docker 
-        {
-            image 'maven:3.6.3'
-        }
-    }
 
-    //  agent any
 
-    // environment
+.0pipeline {
+    // agent 
     // {
-    //     mavenHome= tool 'myMaven'
-    //     dockerHome= tool 'myDocker'
+    //     docker 
+    //     {
+    //         image 'maven:3.6.3'
+    //     }
+    // }
 
-    //     PATH= "$mavenHome/bin:$dockerHome/bin:$PATH"
+     agent any
+
+    environment
+    {
+        mavenHome= tool 'myMaven'
+        dockerHome= tool 'myDocker'
+
+        PATH= "$mavenHome/bin:$dockerHome/bin:$PATH"
         
 
-    // }
+    }
 
     stages
  {
@@ -25,16 +27,13 @@ pipeline {
 
      stage('Build')
 	 {
-           	    // environment 
-                // {
-                //   HOME="."
-                // }
+           	    
                 steps 
 		        {
-              	    // sh 'mvn --version'
-                    // sh 'docker version'
+              	    sh 'mvn --version'
+                    sh 'docker version'
                      echo "Building stage"
-                     sh 'mvn --version'
+                    //  sh 'mvn --version'
                     // echo "$PATH"
                     // echo "Build_number $env.BUILD_NUMBER"
                     // echo "Build_id $env.BUILD_ID"
