@@ -44,18 +44,27 @@ pipeline {
 
 
                  }
-	 }
 
-    
-         stage('Compile')
+          stage('Compile')
          {
-             sh 'mvn clean compile'
+             steps
+             {
+                sh 'mvn clean compile'
+             }
+            
          }
 
           stage('Test')
          {
-             sh 'mvn test'
+            steps
+            {
+                    sh 'mvn test'
+            } 
          }
+	 }
+
+    
+       
      
 
 	 
